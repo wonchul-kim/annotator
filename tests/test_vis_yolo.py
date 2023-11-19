@@ -1,4 +1,4 @@
-from annotator.formatter.utils.vis_yolo import vis_yolo
+from annotator.formatter.utils.vis.vis_yolo import vis_yolo
 
 task = 'detection'
 # task = 'segmentation'
