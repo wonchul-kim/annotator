@@ -3,7 +3,9 @@ import numpy as np
 import imgviz
 import os.path as osp 
 import os
-from utils import search_folders, search_img_file, xywh2xyxy
+
+from annotator.formatter.utils.general import search_folders, search_img_file
+from annotator.formatter.utils.functional import xywh2xyxy
 
 def read_labels_txt_file(txt_file):
     labels = []
@@ -65,7 +67,7 @@ def vis_det_img(img, anns, labels, width, height, color_map):
                                 (int(xyxy[2]), int(xyxy[3])),
                     tuple(color), 1)
 
-def vis_yolo_seg(input_dir, output_dir, image_exts):
+def vis_yolo(task, input_dir, output_dir, image_exts):
 
     if not osp.exists(output_dir):
         os.makedirs(output_dir)
@@ -97,10 +99,3 @@ def vis_yolo_seg(input_dir, output_dir, image_exts):
             cv2.imwrite(osp.join(_output_dir, f'{filename}.bmp'), img)                
                 
                 
-task = 'detection'
-# task = 'segmentation'
-input_dir = '/home/wonchul/Downloads/sungwoo_edge/yolo_{}_split_dataset'.format(task)
-output_dir = '/home/wonchul/Downloads/sungwoo_edge/vis_yolo_{}'.format(task)
-image_exts = ['bmp']
-
-vis_yolo_seg(input_dir, output_dir, image_exts)

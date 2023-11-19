@@ -3,7 +3,9 @@ import os.path as osp
 from shutil import copyfile
 import json
 import numpy as np
-from utils import search_folders, search_img_file, xyxy2xywh
+
+from annotator.formatter.utils.general import search_folders, search_img_file
+from annotator.formatter.utils.functional import xyxy2xywh
 
 
 def is_ignore_case(ann):
@@ -91,10 +93,3 @@ def labelme_to_yolo(task, input_dir, output_dir, image_exts, copy_image=True,log
 
     write_labels_txt_file(output_dir, labels)
         
-task = 'detection'
-# task = 'segmentation'
-input_dir = '/home/wonchul/Downloads/sungwoo_edge/split_dataset'
-output_dir = '/home/wonchul/Downloads/sungwoo_edge/yolo_{}_split_dataset'.format(task)
-image_exts = ['bmp']
-
-labelme_to_yolo(task, input_dir, output_dir, image_exts)
